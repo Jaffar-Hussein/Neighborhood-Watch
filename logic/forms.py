@@ -5,7 +5,7 @@ from django import forms
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(
-        required=True, widget=forms.EmailInput(attrs={'class': 'input-val bg-transparent form-control'}))
+        required=True, widget=forms.EmailInput(attrs={'class': 'input-val bg-transparent form-control form-control-lg my-3'}))
 
     class Meta:
         model = User
@@ -13,9 +13,9 @@ class RegisterForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super(RegisterForm, self).__init__(*args, **kwargs)
-        self.fields['password2'].widget.attrs['class'] = 'input-val bg-transparent  form-control'
-        self.fields['username'].widget.attrs['class'] = 'input-val bg-transparent form-control'
-        self.fields['password1'].widget.attrs['class'] = 'input-val bg-transparent form-control'
+        self.fields['password2'].widget.attrs['class'] = 'input-val bg-transparent  form-control form-control-lg my-3'
+        self.fields['username'].widget.attrs['class'] = 'input-val bg-transparent form-control form-control-lg my-3'
+        self.fields['password1'].widget.attrs['class'] = 'input-val bg-transparent form-control form-control-lg my-3'
 
         for fieldname in ['username', 'password1', 'password2']:
             self.fields[fieldname].help_text = None
