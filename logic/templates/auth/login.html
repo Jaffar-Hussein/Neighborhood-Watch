@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container text-center d-flex flex-column justify-content-center align-items-center">
+        <form method="post" class="needs-validation" novalidate>
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" class="btn btn-primary w-75 mt-2 " value="Submit">
+        </form>
+    </div>
+{% endblock content %}

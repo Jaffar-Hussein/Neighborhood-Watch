@@ -13,4 +13,4 @@ class Neighbourhood(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, related_name="users",on_delete=models.CASCADE)
-    neighbourhood = models.ForeignKey(Neighbourhood, related_name="occupants",on_delete=models.CASCADE)
+    neighbourhood = models.ForeignKey(Neighbourhood, related_name="occupants",on_delete=models.CASCADE,null=True)
