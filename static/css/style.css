@@ -31,10 +31,11 @@
 .form-control:focus {
     border-color: #008090 !important;
 }
-.btn-outline-dark:active
-.btn-primary,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary:focus-visible {
-    background-color: ;
+
+.btn-outline-dark:active .btn-outline-dark,
+.btn-outline-dark:focus,
+.btn-outline-dark:active,
+.btn-outline-dark:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
 }
