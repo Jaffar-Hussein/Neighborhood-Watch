@@ -1,4 +1,3 @@
-from tkinter import N
 from django.contrib import admin
 from .models import Profile,Neighbourhood
 # Register your models here.

@@ -1,6 +1,22 @@
 {% extends 'layout.html' %}
+{% load static %}
 {% block content %}
 
-
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <div class="">
+                <p class="h3 neigh">Your Neighbourhood <br> Guide and Compass </p>
+                <p class="text-muted my-3">View All the stories , businesses and <br>
+                     ammenties information within your <br>
+                      neighbour hood</p>
+                <button class="btn btn-secondary my-2">Search Business</button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <img src="{%static 'Houses.svg'%}" class="img-fluid" alt="">
+        </div>
+    </div>
+</div>
 
 {% endblock content %}

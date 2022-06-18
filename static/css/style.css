@@ -31,10 +31,15 @@
 .form-control:focus {
     border-color: #008090 !important;
 }
-.btn-outline-dark:active
+.neigh{
+    letter-spacing: 5px;
+}
+.btn-secondary,.btn-secondary:hover{
+    background-color: #005F73 !important;
+}
+/* .btn-outline-dark:active
 .btn-primary,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary:focus-visible {
-    background-color: ;
-}
+    background-color: ; */
