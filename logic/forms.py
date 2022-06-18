@@ -33,9 +33,9 @@ class LoginForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
     # required_css_class = 'required d-none'
     username.widget.attrs.update(
-        {'class': 'form-control m-2 w-75 input-val', 'placeholder': 'Username'})
+        {'class': 'form-control form-control-lg my-3', 'placeholder': 'Username'})
     password.widget.attrs.update(
-        {'class': 'form-control m-2 w-75 input-val', 'placeholder': 'Password'})
+        {'class': 'form-control form-control-lg my-3', 'placeholder': 'Password'})
 
     class Meta:
         model = User
