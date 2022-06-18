@@ -14,10 +14,10 @@
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary:focus-visible {
-    background-color: #028090 !important;
+    background-color: #005F73 !important;
     border-color: none !important;
     outline: none !important;
-    border-color: #028090 !important;
+    border-color: #005F73 !important;
     box-shadow: none !important;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .form-control:focus {
-    border-color: #008090 !important;
+    border-color: #005F73 !important;
 }
 
 .btn-outline-dark:active .btn-outline-dark,
@@ -39,12 +39,21 @@
     outline: none !important;
     box-shadow: none !important;
 }
-.neigh{
+
+.neigh {
     letter-spacing: 5px;
 }
-.btn-secondary,.btn-secondary:hover{
+
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:focus {
     background-color: #005F73 !important;
+    border-color: #005F73 !important;
+    outline: none !important;
+    box-shadow:#005F73 !important;
 }
+
 /* .btn-outline-dark:active
 .btn-primary,
 .btn-primary:focus,
