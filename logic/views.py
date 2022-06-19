@@ -7,6 +7,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from .models import Businesses
 
+
 @login_required
 def home(request):
     context = {}
@@ -61,13 +62,18 @@ def logout_request(request):
 
 
 def account(request):
-    context={
-        "profile":profile
+    current_user = request.user
+    
+    context = {
+        "profile": current_user
+
     }
-    return render(request, 'account.html' , context=context)
+    return render(request, 'account.html', context=context)
+
+
 def Business_request(request):
-    projects=Businesses.objects.all()
-    context={
-        "business":projects
+    projects = Businesses.objects.all()
+    context = {
+        "business": projects
     }
-    return render(request,'businesses.html', context=context)
+    return render(request, 'businesses.html', context=context)

@@ -79,3 +79,6 @@
     position: relative;
     width: 10rem;
 }
+.float{
+    width: 10vw !important;
+}

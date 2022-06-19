@@ -1,6 +1,3 @@
-from doctest import debug_script
-from email.policy import default
-from unicodedata import name
 from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
@@ -49,6 +46,6 @@ class Businesses(models.Model):
         return business
 
     @classmethod
-    def update_business(cls, name, user, neighbourhood,description, email, business_image):
+    def update_business(cls, name, user, neighbourhood, description, email, business_image):
         cls.update(name=name, user=user,
-                   neighbourhood=neighbourhood, email=email, business_image=business_image,description=description)
+                   neighbourhood=neighbourhood, email=email, business_image=business_image, description=description)
