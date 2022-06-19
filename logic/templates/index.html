@@ -18,9 +18,16 @@
                     <br>
                     neighbourhood
                 </p>
-                {% if true %}
+                {% if user.neighbourhood %}
+                <a href="{%url 'business' %}">
                 <button class="btn btn-secondary my-2">Search Business</button>
-                
+                </a>
+                {%else%}
+                <a href="{%url 'account' %}">
+                <button class="btn btn-secondary my-2">Update Neighbourhood</button>
+
+                </a>
+
                 {% endif %}
                 
             </div>

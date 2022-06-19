@@ -16,9 +16,11 @@ from .models import Businesses, Neighbourhood, Profile, Posts
 def home(request):
     business = Businesses.objects.all()[0:3]
     posts  = Posts.objects.all()
+    user = Profile.objects.filter(user=request.user).first()
     context = {
         "business": business,
-        "posts": posts
+        "posts": posts,
+        "user": user
     }
 
     return render(request, 'index.html', context=context)
