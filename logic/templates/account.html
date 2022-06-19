@@ -17,7 +17,9 @@
                         <p class="lead">Username: {{profile.user.username}}</p>
                     </div>
                     <div class="d-flex align-items-start justify-content-center">
-                        <p class="lead">Hoood:{{profile.neighbourhood.name}}</p>
+                        <p class="lead">
+                            Hoood:{%if profile.neighbourhood.name%}{{profile.neighbourhood.name}}{%else%}Homeless{%endif%}
+                        </p>
                     </div>
                     <div class="btn-group dropend">
                         <button type="button" class="btn btn-primary  btn-sm dropdown-toggle" data-bs-toggle="dropdown"
@@ -39,31 +41,32 @@
             </div>
             <!-- Below Profile -->
             <div class="container border-top d-flex flex-column  align-items-center">
-                
-                
-                    <p class="h4">Posts</p>
-            
-                </div>
-                <div class="row my-3">
-                    {% for post in posts %}
-                    <div class="col-md-4">
-                        <div class="card" style="width: 20rem;">
-                            <img class="card-img-top" src="{{ post.image.url }}" alt="Card image" style="width:100%">
-                            <div class="card-body">
-                                <h4 class="card-title">{{ post.title }}</h4>
-                                <p class="card-text">{{ post.content }}</p>
-                                <!-- <a href="#" class="btn btn-primary">See Profile</a> -->
-                            </div>
+
+
+                <p class="h4">Posts</p>
+
+            </div>
+            <div class="row my-3">
+                {% for post in posts %}
+                <div class="col-md-4">
+                    <div class="card" style="width: 20rem;">
+                        <img class="card-img-top" src="{{ post.image.url }}" alt="Card image" style="width:100%">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ post.title }}</h4>
+                            <p class="card-text">{{ post.content }}</p>
+                            <!-- <a href="#" class="btn btn-primary">See Profile</a> -->
                         </div>
                     </div>
-                    {% empty %}
-                    <p class="lead text-center"> Add some <a href="{% url 'post'%}" class="link-secondary"> posts </a> to your neighbourhood
-                    </p>
-                    {% endfor %}
                 </div>
-            
+                {% empty %}
+                <p class="lead text-center"> Add some <a href="{% url 'post'%}" class="link-secondary"> posts </a> to
+                    your neighbourhood
+                </p>
+                {% endfor %}
             </div>
+
         </div>
     </div>
+</div>
 </div>
 {% endblock content %}

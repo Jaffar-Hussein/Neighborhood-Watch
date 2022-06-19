@@ -69,6 +69,6 @@ class PostsForm(forms.ModelForm):
         super(PostsForm, self).__init__(*args, **kwargs)
         self.fields['title'].widget.attrs['class'] = ' input-val m-2 form-control'
         self.fields['content'].widget.attrs['class'] = 'input-val m-2 form-control'
-        self.fields['content'].widget.attrs['rows'] = "5"
+        self.fields['content'].widget.attrs['rows'] = "2"
         self.fields['image'].widget.attrs['class'] ='form-control m-2 '
         
