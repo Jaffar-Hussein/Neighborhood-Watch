@@ -1,4 +1,4 @@
-from distutils.log import error
+from .models import Posts
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
@@ -54,9 +54,20 @@ class LoginForm(forms.ModelForm):
                 "Sorry, that login was invalid. Please try again.")
         return self.cleaned_data
 
-
     def login(self, request):
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
         user = authenticate(username=username, password=password)
         return user
+
+
+class PostsForm(forms.ModelForm):
+    class Meta:
+        model = Posts
+        fields = ('title', 'content')
+    def __init__(self, *args, **kwargs):
+        super(PostsForm, self).__init__(*args, **kwargs)
+        self.fields['title'].widget.attrs['class'] = ' input-val m-2 form-control'
+        self.fields['content'].widget.attrs['class'] = 'input-val m-2 form-control'
+        self.fields['content'].widget.attrs['rows'] = "5"
+        

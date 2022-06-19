@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% load bootstrap5 %}
+{% block content %}
+    <div class=" submit-page">
+        {% include "nav.html" %}
+        <form class="submit-form p-5 border mt-3" method="post" >
+            {% csrf_token %}
+            <p class="h4 text-center">Add a new Post</p>
+            {{ form }}
+            <input class="btn btn-primary form-control signup mx-2 submit" type="submit">
+        </form>
+    </div>
+{% endblock content %}

@@ -79,6 +79,39 @@
     position: relative;
     width: 10rem;
 }
-.float{
-    width: 10vw !important;
+
+.float {
+    width: 25vw !important;
+}
+
+.form-select,
+.form-select:hover,
+.form-select:active,
+.form-select:focus {
+    /* background-color: #005F73 !important; */
+    border-color: #005F73 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.submit-page {
+    height: 100vh !important;
+    width: 100vw !important;
+    position: relative !important;
+}
+
+.submit-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    height: fit-content !important;
+    box-shadow: 2.3px 2.3px 5.2px -44px rgba(0, 0, 0, 0.018),
+        5.4px 5.4px 13.3px -44px rgba(0, 0, 0, 0.026),
+        9.7px 9.7px 25.7px -44px rgba(0, 0, 0, 0.032),
+        16.1px 16.1px 44.5px -44px rgba(0, 0, 0, 0.038),
+        26.5px 26.5px 74.2px -44px rgba(0, 0, 0, 0.044),
+        46.2px 46.2px 122.8px -44px rgba(0, 0, 0, 0.052),
+        100px 100px 194px -44px rgba(0, 0, 0, 0.07);
 }

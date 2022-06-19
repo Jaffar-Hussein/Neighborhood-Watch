@@ -1,3 +1,4 @@
+from turtle import title
 from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
@@ -49,3 +50,9 @@ class Businesses(models.Model):
     def update_business(cls, name, user, neighbourhood, description, email, business_image):
         cls.update(name=name, user=user,
                    neighbourhood=neighbourhood, email=email, business_image=business_image, description=description)
+
+class Posts(models.Model):
+    title= models.CharField(max_length=50)
+    writer=models.ForeignKey(Profile, related_name="posts", on_delete=models.CASCADE)
+    content = models.TextField()
+     
