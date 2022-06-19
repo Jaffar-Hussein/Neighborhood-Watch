@@ -2,7 +2,6 @@
 from csv import writer
 from email.mime import image
 from multiprocessing import context
-from turtle import title
 from django.contrib.auth.models import User
 
 from django.shortcuts import render, redirect
