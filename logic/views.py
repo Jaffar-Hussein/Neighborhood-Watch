@@ -74,6 +74,7 @@ def logout_request(request):
 
 def account(request):
     current_user = Profile.objects.filter(user=request.user)
+    user = Profile.objects.filter(user=request.user).first()
     neigbourhood = Neighbourhood.objects.all()
     posts = Posts.objects.filter(writer=Profile.objects.get(user=request.user))
     if request.method == 'POST':
@@ -87,15 +88,19 @@ def account(request):
     context = {
         "profile": current_user.first(),
         "neigbourhoods": neigbourhood,
-        "posts": posts
+        "posts": posts,
+        "user": user
     }
     return render(request, 'account.html', context=context)
 
 
 def Business_request(request):
     projects = Businesses.objects.all()
+    user = Profile.objects.filter(user=request.user).first()
+    
     context = {
-        "business": projects
+        "business": projects,
+        "user": user
     }
     return render(request, 'businesses.html', context=context)
 

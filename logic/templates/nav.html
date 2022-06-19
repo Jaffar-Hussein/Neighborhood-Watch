@@ -20,9 +20,11 @@
         <form action="" role="search" class="mx-5 my-1">
             <input class="form-control me-2 " type="search" placeholder="Search for businesses..." aria-label="Search" name="name">
         </form>
+        {% if user.neighbourhood %}
         <li class="nav-item ">
             <a class="nav-link text-dark" href="{%url 'post' %}">Post</a>
         </li> 
+        {%endif%}
         <li class="nav-item ">
             <a class="nav-link text-dark" href="{%url 'business' %}">Businesses</a>
         </li> 
