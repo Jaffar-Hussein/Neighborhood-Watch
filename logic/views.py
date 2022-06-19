@@ -24,7 +24,7 @@ def login_request(request):
                     'form': form,
                     'valid': 'was-validated'
                 }
-            return render(request, 'auth/register.html', context=context)
+            return render(request, 'auth/login.html', context=context)
     form = LoginForm()
     context = {
         'form': form,
