@@ -12,12 +12,18 @@ class Neighbourhood(models.Model):
     admin = models.ForeignKey(
         User, null=False, related_name='neighbourhoods', on_delete=models.CASCADE)
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class Profile(models.Model):
     user = models.OneToOneField(
         User, related_name="users", on_delete=models.CASCADE)
     neighbourhood = models.ForeignKey(
         Neighbourhood, related_name="occupants", on_delete=models.CASCADE, null=True)
+
+    def __str__(self) -> str:
+        return self.user.username
 
 
 class Businesses(models.Model):
@@ -51,8 +57,13 @@ class Businesses(models.Model):
         cls.update(name=name, user=user,
                    neighbourhood=neighbourhood, email=email, business_image=business_image, description=description)
 
+
 class Posts(models.Model):
-    title= models.CharField(max_length=50)
-    writer=models.ForeignKey(Profile, related_name="posts", on_delete=models.CASCADE)
+    title = models.CharField(max_length=50)
+    writer = models.ForeignKey(
+        Profile, related_name="posts", on_delete=models.CASCADE)
     content = models.TextField()
-     
+    image = CloudinaryField("image")
+
+    def __str__(self) -> str:
+        return self.title

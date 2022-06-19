@@ -64,10 +64,11 @@ class LoginForm(forms.ModelForm):
 class PostsForm(forms.ModelForm):
     class Meta:
         model = Posts
-        fields = ('title', 'content')
+        fields = ('title', 'content','image')
     def __init__(self, *args, **kwargs):
         super(PostsForm, self).__init__(*args, **kwargs)
         self.fields['title'].widget.attrs['class'] = ' input-val m-2 form-control'
         self.fields['content'].widget.attrs['class'] = 'input-val m-2 form-control'
         self.fields['content'].widget.attrs['rows'] = "5"
+        self.fields['image'].widget.attrs['class'] ='form-control m-2 '
         

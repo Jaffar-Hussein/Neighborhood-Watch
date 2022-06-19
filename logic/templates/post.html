@@ -3,7 +3,7 @@
 {% block content %}
     <div class=" submit-page">
         {% include "nav.html" %}
-        <form class="submit-form p-5 border mt-3" method="post" >
+        <form class="submit-form p-5 border mt-3" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <p class="h4 text-center">Add a new Post</p>
             {{ form }}

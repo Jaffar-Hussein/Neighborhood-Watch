@@ -1,53 +1,81 @@
 {% extends 'layout.html' %}
 {% load static %}
 {% block content %}
-    {% include 'nav.html' %}
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <div class="">
-                    <p class="h3 neigh">
-                        Your Neighbourhood
-                        <br>
-                        Guide and Compass
-                    </p>
-                    <p class="text-muted my-3">
-                        View All the stories on businesses,
-                        <br>
-                        ammenities and latest updates from your
-                        <br>
-                        neighbourhood
-                    </p>
-                    <button class="btn btn-secondary my-2">Search Business</button>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <img src="{% static 'Houses.svg' %}" class="img-fluid" alt="">
+{% include 'nav.html' %}
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <div class="">
+                <p class="h3 neigh">
+                    Your Neighbourhood
+                    <br>
+                    Guide and Compass
+                </p>
+                <p class="text-muted my-3">
+                    View All the stories on businesses,
+                    <br>
+                    ammenities and latest updates from your
+                    <br>
+                    neighbourhood
+                </p>
+                {% if true %}
+                <button class="btn btn-secondary my-2">Search Business</button>
+                
+                {% endif %}
+                
             </div>
         </div>
-        <div class="d-flex justify-content-between">
-            <p class="h4">Business Information</p>
-            <a href="{%url 'business'%}">
-                <button class="btn btn-outline-primary">View All</button>
-
-            </a>
+        <div class="col-md-6">
+            <img src="{% static 'Houses.svg' %}" class="img-fluid" alt="">
         </div>
-      <div class="row my-3">
-        {% for bs in business %}
+    </div>
 
+    <div class="d-flex justify-content-between">
+        <p class="h4">Posts</p>
+
+    </div>
+    <div class="row my-3">
+        {% for post in posts %}
         <div class="col-md-4">
             <div class="card" style="width: 20rem;">
-              <img class="card-img-top" src="{{bs.business_image.url}}" alt="Card image" style="width:100%">
-              <div class="card-body">
-                <h4 class="card-title">{{bs.name}}</h4>
-                <p class="card-text">{{bs.description}}</p>
-                <!-- <a href="#" class="btn btn-primary">See Profile</a> -->
-              </div>
+                <img class="card-img-top" src="{{ post.image.url }}" alt="Card image" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title">{{ post.title }}</h4>
+                    <p class="card-text">{{ post.content }}</p>
+                    <!-- <a href="#" class="btn btn-primary">See Profile</a> -->
+                </div>
             </div>
         </div>
+        {% empty %}
+        <p class="lead text-center"><a href="{%url 'account'%}">update</a> your neighbourhood to view the latest posts
+        </p>
         {% endfor %}
-
-      </div>
     </div>
-    
+
+    <div class="d-flex justify-content-between">
+        <p class="h4">Business Information</p>
+        <a href="{% url 'business' %}">
+            <button class="btn btn-outline-primary">View All</button>
+        </a>
+    </div>
+    <div class="row my-3">
+        {% for bs in business %}
+        <div class="col-md-4">
+            <div class="card" style="width: 20rem;">
+                <img class="card-img-top" src="{{ bs.business_image.url }}" alt="Card image" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title">{{ bs.name }}</h4>
+                    <p class="card-text">{{ bs.description }}</p>
+                    <!-- <a href="#" class="btn btn-primary">See Profile</a> -->
+                </div>
+            </div>
+        </div>
+        {%empty%}
+        <p class="lead text-center"><a href="{%url 'account'%}">update</a> your neighbourhood to view the business info
+        </p>
+
+
+        {% endfor %}
+    </div>
+</div>
 {% endblock content %}
