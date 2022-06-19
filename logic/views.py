@@ -1,4 +1,6 @@
 # from distutils.log import error
+from multiprocessing import context
+import profile
 from django.shortcuts import render, redirect
 from .forms import RegisterForm, LoginForm
 from django.contrib.auth import login, authenticate, logout
@@ -12,7 +14,7 @@ def home(request):
 
 
 def login_request(request):
-    form = LoginForm(request.POST or None)
+    form = LoginForm(request.POST)
     if request.POST:
         if form.is_valid():
             user = form.login(request)
@@ -21,10 +23,10 @@ def login_request(request):
                 return redirect('home')
         else:
             context = {
-                    'form': form,
-                    'valid': 'was-validated'
-                }
-            return render(request, 'auth/login.html', context=context)
+                'form': form,
+                'valid': 'was-validated'
+            }
+        return render(request, 'auth/login.html', context=context)
     form = LoginForm()
     context = {
         'form': form,
@@ -56,3 +58,10 @@ def register(request):
 def logout_request(request):
     logout(request)
     return redirect('login')
+
+
+def account(request):
+    context={
+        "profile":profile
+    }
+    return render(request, 'account.html' , context=context)

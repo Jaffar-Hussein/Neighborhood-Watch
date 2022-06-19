@@ -52,7 +52,7 @@
     background-color: #005F73 !important;
     border-color: #005F73 !important;
     outline: none !important;
-    box-shadow:#005F73 !important;
+    box-shadow: #005F73 !important;
 }
 
 /* .btn-outline-dark:active
@@ -61,3 +61,21 @@
 .btn-primary:active,
 .btn-primary:focus-visible {
     background-color: ; */
+
+.img-resp {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.img-div {
+    border-radius: 50%;
+    box-sizing: border-box;
+    height: 10rem;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    width: 10rem;
+}
