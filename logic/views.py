@@ -9,7 +9,11 @@ from .models import Businesses
 
 @login_required
 def home(request):
-    context = {}
+    business=Businesses.objects.all()[0:3]
+    context = {
+        "business": business,
+    }
+
     return render(request, 'index.html', context=context)
 
 
