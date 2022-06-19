@@ -1,3 +1,4 @@
+# from distutils.log import error
 from django.shortcuts import render, redirect
 from .forms import RegisterForm, LoginForm
 from django.contrib.auth import login, authenticate, logout
@@ -11,17 +12,19 @@ def home(request):
 
 
 def login_request(request):
-    form = LoginForm()
-    if request.method == 'POST':
-        if request.method == "POST":
-            username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home')
+    form = LoginForm(request.POST or None)
+    if request.POST:
+        if form.is_valid():
+            user = form.login(request)
+            if user:
+                login(request, user)
+                return redirect('home')
         else:
-            return redirect('login')
+            context = {
+                    'form': form,
+                    'valid': 'was-validated'
+                }
+            return render(request, 'auth/register.html', context=context)
     form = LoginForm()
     context = {
         'form': form,
@@ -32,14 +35,23 @@ def login_request(request):
 def register(request):
     form = RegisterForm()
     if request.method == 'POST':
+        print(form.error_messages)
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect("login")
+        else:
+            context = {
+                'form': form,
+                'valid': 'was-validated'
+            }
+        return render(request, 'auth/register.html', context=context)
+
     context = {
         'form': form,
     }
     return render(request, 'auth/register.html', context=context)
+
 
 def logout_request(request):
     logout(request)
