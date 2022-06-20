@@ -66,6 +66,8 @@ class Posts(models.Model):
         Profile, related_name="posts", on_delete=models.CASCADE)
     content = models.TextField()
     image = CloudinaryField("image")
+    neighbourhood = models.ForeignKey(
+        Neighbourhood, related_name="neighbour_post", on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return self.title

@@ -2,6 +2,7 @@
 from csv import writer
 from email.mime import image
 from multiprocessing import context
+import re
 from django.contrib.auth.models import User
 
 from django.shortcuts import render, redirect
@@ -13,8 +14,10 @@ from .models import Businesses, Neighbourhood, Profile, Posts
 
 @login_required
 def home(request):
-    business = Businesses.objects.all()[0:3]
-    posts  = Posts.objects.all()
+    current_user = request.user
+    neighbour=Profile.objects.get(user=current_user)
+    business = Businesses.objects.all().filter(neighbourhood=neighbour.neighbourhood)[0:3]
+    posts  = Posts.objects.all().filter(neighbourhood=neighbour.neighbourhood)
     user = Profile.objects.filter(user=request.user).first()
     context = {
         "business": business,
@@ -113,7 +116,9 @@ def post_request(request):
             title = form.cleaned_data['title']
             content = form.cleaned_data['content']
             image = form.cleaned_data['image']
-            form = Posts.objects.create(title=title, content=content,
+            neighbour=Profile.objects.get(user=request.user)
+            neighbourhood=neighbour.neighbourhood
+            form = Posts.objects.create(title=title, content=content,neighbourhood=neighbourhood,
                              writer=Profile.objects.get(user=request.user),image=image)
             form.save()
             return redirect('home')
