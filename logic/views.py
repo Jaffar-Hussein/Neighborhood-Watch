@@ -8,8 +8,10 @@ from .models import Businesses, Neighbourhood, Profile, Posts
 
 @login_required
 def home(request):
-    business = Businesses.objects.all()[0:3]
-    posts  = Posts.objects.all()
+    current_user = request.user
+    neighbour=Profile.objects.get(user=current_user)
+    business = Businesses.objects.all().filter(neighbourhood=neighbour.neighbourhood)[0:3]
+    posts  = Posts.objects.all().filter(neighbourhood=neighbour.neighbourhood)
     user = Profile.objects.filter(user=request.user).first()
     neighbourhood = Neighbourhood.objects.filter(occupants=Profile.objects.get(user=request.user)).first()
     context = {
@@ -110,7 +112,9 @@ def post_request(request):
             title = form.cleaned_data['title']
             content = form.cleaned_data['content']
             image = form.cleaned_data['image']
-            form = Posts.objects.create(title=title, content=content,
+            neighbour=Profile.objects.get(user=request.user)
+            neighbourhood=neighbour.neighbourhood
+            form = Posts.objects.create(title=title, content=content,neighbourhood=neighbourhood,
                              writer=Profile.objects.get(user=request.user),image=image)
             form.save()
             return redirect('home')
