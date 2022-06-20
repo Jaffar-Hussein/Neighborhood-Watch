@@ -81,6 +81,8 @@
         {% endfor %}
     </div>
 </div>
-{% include 'footer.html' %}
+{% if user.neighbourhood %}
 
+{% include 'footer.html' %}
+{%endif%}
 {% endblock content %}
