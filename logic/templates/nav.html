@@ -30,7 +30,7 @@
                 <li class="nav-item ">
                     <a class="nav-link text-dark" href="{% url 'business' %}">Businesses</a>
                 </li>
-                {% if user.neighbourhood %}
+                {% if user.neighbourhood and request.path == '/' %}
                     <li class="nav-item ">
                         <a class="nav-link text-dark" href="#footer">Contacts</a>
                     </li>

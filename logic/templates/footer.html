@@ -3,29 +3,32 @@
     <footer class="py-3 my-4" id="footer">
         <div class="nav justify-content-around border-bottom pb-3 mb-3">
             <div>
-                <div  class="d-flex justify-content-center align-items-center">
+                <div  class="d-flex justify-content-center align-items-center mb-1">
                     <img src="{% static 'health.svg' %}" alt=""  class="img-fluid" >
                     <p class="lead mb-0 ms-1">Hospital</p>
     
                 </div>
-                048249247823
+                <p><mark>{{neighbourhood.health}}</mark></p>
             </div>
             <div>
-                <div  class="d-flex justify-content-center align-items-center">
+                <div  class="d-flex justify-content-center align-items-center mb-1">
                     <img src="{% static 'police.svg' %}" alt="" class="img-fluid" >
                     <p class="lead mb-0 ms-1">Police</p>
                 </div>
-                1234567
+                <p><mark>{{neighbourhood.police}}</mark></p>
             </div>
             <div>
-                <div class="d-flex justify-content-center align-items-center">
+                <div class="d-flex justify-content-center align-items-center mb-1">
                     <img src="{% static 'handyman.svg' %}" alt="" class="img-fluid">
                     <p class="lead mb-0 ms-1">Handyman</p>
     
                 </div>
-                4723946321
+                <p><mark>{{neighbourhood.handyman}}</mark></p>
             </div>
         </div>
-        <p class="text-center lead">The Neighbourhood</p>
+        <p class="text-center lead">Neighbourhood: {{neighbourhood.name}}</p>
+        <p class="text-center lead">Current Admin : {{neighbourhood.admin.username}} ~ {% if neighbourhood.admin.username %}
+            <mark> {{neighbourhood.admin.username}}@gmail.com</mark>
+        {% endif %}</p>
     </footer>
 </div>

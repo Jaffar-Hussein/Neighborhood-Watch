@@ -1,12 +1,7 @@
-# from distutils.log import error
-from csv import writer
-from email.mime import image
-from multiprocessing import context
 from django.contrib.auth.models import User
-
 from django.shortcuts import render, redirect
 from .forms import RegisterForm, LoginForm, PostsForm
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Businesses, Neighbourhood, Profile, Posts
 
@@ -16,10 +11,12 @@ def home(request):
     business = Businesses.objects.all()[0:3]
     posts  = Posts.objects.all()
     user = Profile.objects.filter(user=request.user).first()
+    neighbourhood = Neighbourhood.objects.filter(occupants=Profile.objects.get(user=request.user)).first()
     context = {
         "business": business,
         "posts": posts,
-        "user": user
+        "user": user,
+        "neighbourhood": neighbourhood
     }
 
     return render(request, 'index.html', context=context)
